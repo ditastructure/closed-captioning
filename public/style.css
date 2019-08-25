@@ -1,0 +1,141 @@
+/* CSS files add styling rules to your content */
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700,700i&display=swap');
+
+html {
+  font-size: 10px;
+}
+
+body {
+  /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
+  font-family: "IBM Plex Sans", sans-serif;
+  margin: 2rem;
+  font-size: 1.6rem;
+}
+
+h1 {
+  color: #373fff;
+  font-style: italic;
+  font-size: 3.2rem;
+}
+
+h2 {
+  margin-top: 4rem;
+}
+
+hr {
+  margin: 3rem 0;
+}
+
+.button {
+  padding: .5em 1em;
+  border-radius: .5rem;
+  font-weight: 700;
+  border: .2rem solid #000;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+.button:hover {
+  background: #f5f5f5;
+  box-shadow: .2rem .2rem 0 0 #000;
+}
+
+.button:active {
+  background: #e8e8e8;
+}
+
+section {
+  max-width: 65rem;
+  margin: auto;
+}
+
+.masthead {
+  padding: 2rem;
+  background: rgb(235, 235, 255);
+  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+}
+
+.unstyled-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#profile {
+  position: relative;
+}
+
+#profile-button:not([hidden]) {
+  display: flex;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+#profile-button span {
+  padding: 0 .25rem;
+}
+
+#profile-menu:not([hidden]) {
+  position: absolute;
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+#profile-menu .button {
+  width: 100%;
+}
+
+#profile-menu .button:hover {
+  box-shadow: none;
+}
+
+#profile-menu .button:not(:last-child) {
+  border-bottom-width: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#profile-menu .button:last-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.tooltip-fill {
+  position: absolute;
+  top: -7px;
+  right: 55px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+}
+
+.tooltip-border {
+  position: absolute;
+  top: -10px;
+  right: 55px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #000;
+}
+
+#preview {
+  margin-top: 2rem;
+  background: rgb(235, 235, 255);
+  padding: 2rem;
+  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+}
+
+#viewer {
+  background: rgba(0, 0, 0, .8);
+  color: #fff;
+  font-size: 2rem;
+}

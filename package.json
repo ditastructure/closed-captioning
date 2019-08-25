@@ -1,0 +1,12 @@
+{
+  "name": "closed-captioning",
+  "version": "0.0.1",
+  "scripts": {
+    "start": ".data/redis-stable/src/redis-server --daemonize yes && node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "redis": "^2.8.0",
+    "node-fetch": "^2.6.0"
+  }
+}
