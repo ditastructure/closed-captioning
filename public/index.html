@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>closed-captioning</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+  </head>  
+  <body>
+    <section id="signed-out-section" hidden>
+      <button id="sign-in-button" class="button" hidden>Sign in with Twitch 🦄</button>
+      
+      <div class="masthead">
+        <h1>closed-captioning</h1>
+        <p>
+          I created this project because I wanted to learn 🧠 how to use the <a href="https://dev.twitch.tv/">Twitch API</a> and the <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition">Web Speech API</a> to make it easier to add closed captioning to your Twitch channel. There are some other apps and extensions that do closed captioning too, so <a href="https://stream-cc.gooseman.codes/">check them out</a> 📢!
+        </p>
+        <a href="https://help.twitch.tv/s/article/guide-to-closed-captions" class="button">Learn about closed captions on Twitch &rarr;</a>
+        <hr>
+        <p>
+          ✨ This project is open source and available on <a href="https://github.com/ditastructure/closed-captioning">GitHub</a>!
+        </p>
+      </div>
+      
+      <h2>
+        🚀 Get started 
+      </h2>
+      <p>
+        Sign in above 👆 to start using this service 🤗.
+      </p>
+      
+      <h2>
+        👋 About me 
+      </h2>
+      <p>
+        ( ᴜ ω ᴜ )
+      </p>
+      <p>
+        Hi, my name is Dita Structure! I like to do drag 💄, play games 🎮, and teach people to code 💻. You can find me on these platforms 👇.
+      </p>
+      <ul class="unstyled-list">
+        <li>💬 <a href="https://twitter.com/ditastructure">Twitter</a></li>
+        <li>🎮 <a href="https://www.twitch.tv/ditastructure">Twitch</a></li>
+        <li>💻 <a href="https://">GitHub</a></li>
+      </ul>
+    </section>
+  
+    <section id="signed-in-section" hidden>
+      <div id="profile">
+        <button id="profile-button" hidden>
+          <img alt="Profile image" width="50">
+          <span></span>
+          <svg width="16" height="16" aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z"></path></svg>
+        </button>
+        <div id="profile-menu" hidden>
+          <span class="tooltip-border"></span>
+          <span class="tooltip-fill"></span>
+          <button id="view-token-button" class="button">View token 🔧</button>
+          <button id="sign-out-button" class="button">Sign out 😭</button>
+        </div>
+      </div>
+      
+      <h1>
+        closed-captioning
+      </h1>
+      
+      <div>
+        <button id="start-button" class="button">🔴 Start</button>
+        <button id="stop-button" class="button">⚫ Stop</button>
+        <a id="viewer-link" target="_blank" class="button">👓 Viewer</a>
+      </div>
+      
+      <div id="preview" role="log" aria-live="polite">
+        Live preview...
+      </div>
+    </section>
+    
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+    
+    <script>
+      var params = new URLSearchParams(location.hash.substring(1));
+      token = params.get('access_token') || localStorage.getItem('token');
+      
+      // Remove hash from url
+      if (params.get('access_token')) {
+        history.replaceState(null, document.title, '/');
+      }
+      
+      if (token) {
+        // logged in
+        localStorage.setItem('token', token);
+        
+        fetch('https://api.twitch.tv/helix/users', {
+          headers: {
+            'Authorization': 'Bearer ' + token
+          }
+        }).then(function (res) {
+          if (res.ok) {
+            return res.json();
+          } else {
+            console.log(res);
+            throw new Error('Error ' + res.statusText);
+          }
+        }).then(function (res) {
+          document.querySelector('#signed-in-section').removeAttribute('hidden');
+          document.querySelector('#profile-button').removeAttribute('hidden');
+          document.querySelector('#profile-button img').setAttribute('src', res.data[0].profile_image_url);
+          document.querySelector('#profile-button span').innerText = res.data[0].display_name;
+          document.querySelector('#sign-in-button').setAttribute('hidden', true);
+          document.querySelector('#viewer-link').setAttribute('href', '/viewer.html?username=' + res.data[0].login);
+        }).catch(handleError);
+      } else {
+        document.querySelector('#signed-out-section').removeAttribute('hidden');
+        document.querySelector('#sign-in-button').removeAttribute('hidden');
+      }
+
+      var signInSettings = {
+        clientId: 'zla5fi17ixzey8j3triw5zn8mo478s',
+        redirectUri: 'https://closed-captioning.glitch.me/',
+        responseType: 'token',
+        scope: 'openid',
+        claims: ''
+      };
+      
+      var signInUrl = 'https://id.twitch.tv/oauth2/authorize' +
+        '?client_id=' + signInSettings.clientId +
+        '&redirect_uri=' + signInSettings.redirectUri +
+        '&response_type=' + signInSettings.responseType +
+        '&scope=' + signInSettings.scope +
+        '&claims=' + signInSettings.claims;
+      
+      document.querySelector('#sign-in-button').addEventListener('click', function () {
+        location.href = signInUrl;
+      });
+      
+      document.querySelector('#profile-button').addEventListener('click', function () {
+        var profileMenu = document.querySelector('#profile-menu');
+        if (profileMenu.hasAttribute('hidden')) {
+          profileMenu.removeAttribute('hidden');
+        } else {
+          profileMenu.setAttribute('hidden', true);
+        }
+      });
+      
+      document.querySelector('#sign-out-button').addEventListener('click', function () {
+        localStorage.removeItem('token');
+        location.reload();
+      });
+      
+      document.querySelector('#view-token-button').addEventListener('click', function () {
+        alert(localStorage.getItem('token'));
+      });
+      
+      function updateCaption() {
+        var newTranscript = interimTranscript || finalTranscript;
+        
+        if (newTranscript !== previousTranscript) {
+          previousTranscript = newTranscript;
+          
+          fetch('/api/captions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
+            body: JSON.stringify({ caption: newTranscript})
+          }).then(function (res) {
+            if (res.ok) {
+              return res.json();
+            } else {
+              console.log(res);
+              throw new Error('Error ' + res.statusText);
+            }
+          }).then(function (res) {
+            console.log(res);
+          }).catch(handleError);
+        }
+      }
+      
+      function handleError(error) {
+        console.log(error);
+        localStorage.removeItem('token');
+        location.reload();
+      }
+      
+      var interval;
+      var listening = false;
+      var previousTranscript = '';
+      var finalTranscript = '';
+      var interimTranscript = '';
+      var recognition = new webkitSpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      
+      function startRecognition() {
+        finalTranscript = '';
+        interimTranscript = '';
+        listening = true;
+        recognition.start();
+        if (interval) {
+          clearInterval(interval);
+        }
+        interval = setInterval(updateCaption, 500);
+      }
+      
+      function stopRecognition() {
+        listening = false;
+        recognition.stop();
+        if (interval) {
+          clearInterval(interval);
+        }
+      }
+      
+      function onResult(event) {
+        finalTranscript = '';
+        interimTranscript = '';
+        for (var i = event.resultIndex; i < event.results.length; i++) {
+          if (event.results[i].isFinal) {
+            finalTranscript += event.results[i][0].transcript;
+          } else {
+            interimTranscript += event.results[i][0].transcript;
+          }
+        }
+        transcriptArea.innerText = `${finalTranscript}${interimTranscript}`;
+      }
+      
+      function onEnd() {
+        if (listening) {
+          recognition.start();
+        }
+      }
+      
+      recognition.addEventListener('result', onResult);
+      recognition.addEventListener('end', onEnd);
+      
+      var startButton = document.getElementById('start-button');
+      startButton.addEventListener('click', startRecognition);
+      var stopButton = document.getElementById('stop-button');
+      stopButton.addEventListener('click', stopRecognition);
+      var transcriptArea = document.getElementById('preview');
+    </script>
+  </body>
+</html>
