@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/54124815/63644675-20e80400-c6b4-11e9-99a9-bf91dce0ead6.png)
 
-## (~‾▿‾)~ [Demo](https://closed-captioning.glitch.me/)
+## ( ~ ‾▿‾) ~ [Demo](https://closed-captioning.glitch.me/)
 
 Use your browser's speech recognition to perform closed captioning for your Twitch channel 🤗.
 
