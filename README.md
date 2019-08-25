@@ -8,14 +8,14 @@ Use your browser's speech recognition to perform closed captioning for your Twit
 
 ## 📝 Table of contents
 
-* [About this project](#about-this-project)
-  * [Built with](#built-with)
-* [Getting started](#getting-started)
-  * [Prerequisites](#prerequisites)
-* [Usage](#usage)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
+* [About this project](#-about-this-project)
+  * [Built with](#-built-with)
+* [Getting started](#-getting-started)
+  * [Prerequisites](#-prerequisites)
+* [Usage](#-usage)
+* [Contributing](#-contributing)
+* [License](#-license)
+* [Contact](#-contact)
 
 
 ## 💬 About this project
