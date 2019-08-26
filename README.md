@@ -2,7 +2,7 @@
 
 # 🎬 Closed Captioning
 
-![image](https://user-images.githubusercontent.com/54124815/63644675-20e80400-c6b4-11e9-99a9-bf91dce0ead6.png)
+![Screenshot](https://cdn.glitch.com/08650d2e-f616-4fad-88a6-3706fa068ded%2Fscreenshot-1.png?v=1566858279729)
 
 ## ( ~ ‾▿‾) ~ [Demo](https://closed-captioning.glitch.me/)
 
