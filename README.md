@@ -1,4 +1,6 @@
-# 🎬 closed-captioning
+![Logo](https://cdn.glitch.com/08650d2e-f616-4fad-88a6-3706fa068ded%2Fcc-logo.jpg?v=1566854489647)
+
+# 🎬 Closed Captioning
 
 ![image](https://user-images.githubusercontent.com/54124815/63644675-20e80400-c6b4-11e9-99a9-bf91dce0ead6.png)
 
@@ -21,6 +23,8 @@ Use your browser's speech recognition to perform closed captioning for your Twit
 ## 💬 About this project
 
 I created this project because I wanted to learn 🧠 how to use the [Twitch API](https://dev.twitch.tv/) and the [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition) to make it easier to add closed captioning to your Twitch channel. There are some other apps and extensions that do closed captioning too, so [check them out](https://stream-cc.gooseman.codes/) 📢!
+
+Unfortunately, not all browsers support the Web Speech API just yet 😔. Check out [this browser compatibility table](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#Browser_compatibility) to see which browsers work. If you're still unsure, the Chrome browser is confirmed to work with this site.
 
 ### 🔨 Built with
 

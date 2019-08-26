@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>closed-captioning</title>
+    <title>Closed Captioning</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,17 +11,32 @@
   </head>  
   <body>
     <section id="signed-out-section" hidden>
-      <button id="sign-in-button" class="button" hidden>Sign in with Twitch 🦄</button>
+      <header>
+        <img src="https://cdn.glitch.com/08650d2e-f616-4fad-88a6-3706fa068ded%2Fcc-logo.jpg?v=1566854489647" alt="Logo" class="logo" width="50">
+        
+        <h1>
+          Closed Captioning
+        </h1>
+        
+        <button id="sign-in-button" class="button" hidden>Sign in with Twitch 🦄</button>
+      </header>
       
       <div class="masthead">
-        <h1>closed-captioning</h1>
+        <h2>
+          Welcome!
+        </h2>
         <p>
           I created this project because I wanted to learn 🧠 how to use the <a href="https://dev.twitch.tv/">Twitch API</a> and the <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition">Web Speech API</a> to make it easier to add closed captioning to your Twitch channel. There are some other apps and extensions that do closed captioning too, so <a href="https://stream-cc.gooseman.codes/">check them out</a> 📢!
         </p>
-        <a href="https://help.twitch.tv/s/article/guide-to-closed-captions" class="button">Learn about closed captions on Twitch &rarr;</a>
+        <p>
+          Unfortunately, not all browsers support the Web Speech API just yet 😔. Check out this <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#Browser_compatibility">browser compatibility</a> table to see which browsers work. If you're still unsure, the <a href="https://www.google.com/chrome/">Chrome</a> browser is confirmed to work with this site.
+        </p>
+        <p>
+          <a href="https://help.twitch.tv/s/article/guide-to-closed-captions" class="button">Learn about closed captions on Twitch &rarr;</a>
+        </p>
         <hr>
         <p>
-          ✨ This project is open source and available on <a href="https://github.com/ditastructure/closed-captioning">GitHub</a>!
+          ✨ This project is open source and available on <a href="https://github.com/ditastructure/closed-captioning">GitHub</a> and <a href="https://glitch.com/~closed-captioning">Glitch</a>! 
         </p>
       </div>
       
@@ -35,8 +50,8 @@
       <h2>
         👋 About me 
       </h2>
-      <p>
-        ( ᴜ ω ᴜ )
+      <p role="presentation">
+        (●´ω｀●)
       </p>
       <p>
         Hi, my name is Dita Structure! I like to do drag 💄, play games 🎮, and teach people to code 💻. You can find me on these platforms 👇.
@@ -49,23 +64,37 @@
     </section>
   
     <section id="signed-in-section" hidden>
-      <div id="profile">
-        <button id="profile-button" hidden>
-          <img alt="Profile image" width="50">
-          <span></span>
-          <svg width="16" height="16" aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z"></path></svg>
-        </button>
-        <div id="profile-menu" hidden>
-          <span class="tooltip-border"></span>
-          <span class="tooltip-fill"></span>
-          <button id="view-token-button" class="button">View token 🔧</button>
-          <button id="sign-out-button" class="button">Sign out 😭</button>
+      <header>
+        <img src="https://cdn.glitch.com/08650d2e-f616-4fad-88a6-3706fa068ded%2Fcc-logo.jpg?v=1566854489647" alt="Logo" class="logo" width="50">
+
+        <h1>
+          Closed Captioning
+        </h1>
+
+        <div id="profile">
+          <button id="profile-button" hidden>
+            <img alt="Profile image" width="50">
+            <span></span>
+            <svg width="16" height="16" aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z"></path></svg>
+          </button>
+          <div id="profile-menu" hidden>
+            <span class="tooltip-border"></span>
+            <span class="tooltip-fill"></span>
+            <button id="view-token-button" class="button">View token 🔧</button>
+            <button id="sign-out-button" class="button">Sign out 😭</button>
+          </div>
         </div>
-      </div>
+      </header>
       
-      <h1>
-        closed-captioning
-      </h1>
+      <details open>
+        <summary>💭 Instructions</summary>
+        <p>
+          Click the start button below 👇 and start talking to begin the closed captioning process. Then add the Closed Captioning extension to your Twitch dashboard so your viewers can see the captions!
+        </p>
+        <p role="presentation">
+          (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+        </p>
+      </details>
       
       <div>
         <button id="start-button" class="button">🔴 Start</button>
@@ -78,10 +107,7 @@
       </div>
     </section>
     
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
+    <footer>Made with 💙 by <a href="https://ditastructure.github.io/">Dita Structure</a></footer>
     
     <script>
       var params = new URLSearchParams(location.hash.substring(1));
