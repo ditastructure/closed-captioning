@@ -12,10 +12,20 @@ body {
   font-size: 1.6rem;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  margin-right: .5rem;
+}
+
 h1 {
-  color: #373fff;
-  font-style: italic;
-  font-size: 3.2rem;
+  color: rgb(195, 36, 118);
+  font-size: 2rem;
+  flex-grow: 1;
 }
 
 h2 {
@@ -24,6 +34,7 @@ h2 {
 
 hr {
   margin: 3rem 0;
+  border-color: rgba(0, 255, 255, .4)
 }
 
 .button {
@@ -46,20 +57,39 @@ hr {
   background: #e8e8e8;
 }
 
-section {
+section, footer {
   max-width: 65rem;
   margin: auto;
 }
 
+footer {
+  text-align: center;
+  margin: 3rem auto;
+}
+
+details {
+  margin-bottom: 3rem;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
 .masthead {
   padding: 2rem;
-  background: rgb(235, 235, 255);
+  background: rgb(0, 255, 255, .2);
   clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
 }
 
 .unstyled-list {
   list-style-type: none;
   padding-left: 0;
+}
+
+.unstyled-list li {
+  display: inline-block;
+  margin-right: .5em;
 }
 
 #profile {
@@ -129,7 +159,7 @@ section {
 
 #preview {
   margin-top: 2rem;
-  background: rgb(235, 235, 255);
+  background: rgb(0, 255, 255, .2);
   padding: 2rem;
   clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
 }
