@@ -61,8 +61,6 @@ make
 
 ## 💪 Usage
 
-![image](https://user-images.githubusercontent.com/54124815/63644707-b4b9d000-c6b4-11e9-9b1e-d9c3923bd4ab.png)
-
 1. Go to the [demo](https://closed-captioning.glitch.me/) and sign in with your Twitch account.
 2. Click the start button to start the speech recognition.
 3. Click on the viewer button to open the viewer for your captions.
