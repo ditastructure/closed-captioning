@@ -14,6 +14,11 @@ app.use(express.static('public'));
 app.use('/assets', express.static('assets'));
 app.use(express.json());
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.get('/api/captions/:username', (req, res) => {
   client.get(`captions:${req.params.username}`, (err, reply) => {
     res.json({ username: req.params.username, caption: reply || '' });
